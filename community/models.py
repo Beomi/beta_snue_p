@@ -53,7 +53,15 @@ class UserInfo(UserDoingModel):
 
 
 # Basic Board
+class BoardGroup(TimeStampModel):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
 class Board(TimeStampModel):
+    group = models.ForeignKey(BoardGroup)
     name = models.CharField(max_length=100)
     lock_to_studnet = models.BooleanField(default=True) #재학생 게시판
     lock_to_testtakcer = models.BooleanField(default=False) #임고생 게시판
