@@ -71,8 +71,6 @@ verified/
 #iueditor
 .idea/
 
-#migrations on local
-migrations/
 
 #OS Generated
 .DS_Store
