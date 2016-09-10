@@ -18,15 +18,9 @@ class TimeStampModel(models.Model):
         abstract=True
 
 
-class UserDoingModel(TimeStampModel):
-    user = models.OneToOneField(User)
-
-    class Meta:
-        abstract=True
-
-
 # Basic UserInfo
-class UserInfo(UserDoingModel):
+class UserInfo(TimeStampModel):
+    user = models.OneToOneField(User)
     student_num = models.CharField(max_length=9, default='0')
     is_student = models.BooleanField(default=False) #if True: 재학생
     is_testtaker = models.BooleanField(default=False) #if True: 임고생
@@ -70,7 +64,8 @@ class Board(TimeStampModel):
         return self.name
 
 
-class Post(UserDoingModel):
+class Post(TimeStampModel):
+    user = models.ForeignKey(User)
     board = models.ForeignKey(Board)
     title = models.CharField(max_length=200)
     content = models.TextField()
@@ -79,7 +74,8 @@ class Post(UserDoingModel):
         return self.title
 
 
-class AttachFile(UserDoingModel):
+class AttachFile(TimeStampModel):
+    user = models.ForeignKey(User)
     post = models.ForeignKey(Post)
     file = models.FileField()
 
@@ -87,7 +83,8 @@ class AttachFile(UserDoingModel):
         return self.file.name
 
 
-class AttachImage(UserDoingModel):
+class AttachImage(TimeStampModel):
+    user = models.ForeignKey(User)
     post = models.ForeignKey(Post)
     image = models.ImageField()
 
