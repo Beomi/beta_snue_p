@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     #pip
-    'custom_user',
+    'custom_user', # let django user email as username
     #django apps
     'community',
 ]
@@ -62,7 +62,7 @@ TEMPLATES = [
         'DIRS': [
             os.path.join(BASE_DIR, 'templates')
         ],
-        'APP_DIRS': True,
+        'APP_DIRS': False, # Let templates htmls to /templates folder.
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
@@ -126,7 +126,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "dev_static"),
+    os.path.join(BASE_DIR, "dev_static"), #Real Deploy folder / Apache/NginX will serve this folder @url /static/
 )
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
 
