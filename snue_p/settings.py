@@ -126,9 +126,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, "dev_static"), #Real Deploy folder / Apache/NginX will serve this folder @url /static/
+    os.path.join(BASE_DIR, "dev_static"), #Not REAL deploy. for 'load staticfiles', django will serve this until Dev.
 )
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/') #Real Deploy folder / Apache/NginX will serve this folder @url /static/
 
 
 # Custom AUTH
